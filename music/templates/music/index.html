@@ -2,14 +2,11 @@
 <!--Show view from 'music/base.html' and put
 this block body inside the base.html'html-->
 {% block body %}
-    {% if all_albumss %}
-    <h3>All albums:</h3>
+
     <ul>
-        {% for album in all_albumss %}
-        <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
+        {% for album in all_albums %}
+            <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a> </li>
         {% endfor %}
     </ul>
-    {% else %}
-    <h3>No albums. :(</h3>
-    {% endif %}
+
 {% endblock %}

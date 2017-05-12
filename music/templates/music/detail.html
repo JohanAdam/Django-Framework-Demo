@@ -6,19 +6,25 @@
     <div class="container">
 
         <div class="row-fluid">
+
+            <!-- Left Section -->
             <div class="col-md-3" >
-
                 <div class="thumbnail">
-                    <img src="{{ album.album_logo }}" class="img-responsive" style="padding:10px">
 
+                    <!--Album Logo-->
+                    <img src="{{ album.album_logo.url }}" class="img-responsive" style="padding:10px">
+                    <!-- Album Title -->
                     <h2 style="margin-left:20px">{{ album.album_title }} <br>
                         <small> {{ album.artist }}</small>
                     </h2>
+
+                    <!-- Album Artist -->
                     <p class="text-muted small text-right"  style="margin-right:10px">{{ album.genre }}</p>
                 </div> 
 
             </div>
 
+            <!-- Right Section -->
             <div class="col-md-9" style="height:50px">
                 
                 <div class="row">
@@ -47,9 +53,6 @@
                                         {% endif %}
                                     </td>
                                     <td>
-                                        <!--<a href="{% url 'music:song-delete' song.id %}" class="btn btn-danger btn-sm" role="button">-->
-                                            <!--<span class="glyphicon glyphicon-trash" aria-hidden="true"/>-->
-                                        <!--</a>-->
                                         <!-- Delete -->
                                         <form action="{% url 'music:song-delete' song.id %}" method="post" style="display: inline;">
                                             {% csrf_token %}

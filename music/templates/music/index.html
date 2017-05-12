@@ -9,9 +9,10 @@ this block body inside the base.html'html-->
         
         <div class="container col-xs-6 col-sm-4 col-md-2">
             <div class="thumbnail">
+
+                <!-- Album Logo -->
                 <a href="{% url 'music:detail' album.id %}">
-                    <!--<img src="{{ album.album_logo.url }}" class="img-responsive">-->
-                     <img src="{{ album.album_logo }}" class="img-responsive" style="width: 210px; height: 210px;">
+                     <img src="{{ album.album_logo.url }}" class="img-responsive" style="width: 210px; height: 210px;">
                 </a>
                 <div class="caption">
                     <h4 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ album.album_title }}</h4>

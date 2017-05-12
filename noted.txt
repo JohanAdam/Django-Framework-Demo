@@ -1,0 +1,5 @@
+#For create super user /admin
+python manage.py createsuperuser
+admin
+admin@example.com
+nyannyan95

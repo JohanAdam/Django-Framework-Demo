@@ -3,17 +3,64 @@
 
 {% block body %}
 
-    <img src="{{ album.album_logo }}" style="width: 250px;">
+    <div class="container">
 
-    <h1>{{ album.album_title }}</h1>
-    <h2>{{ album.artist }}</h2>
+        <div class="row-fluid">
+            <div class="col-md-3" >
 
-    {% for song in album.song_set.all %}
-        {{ song.song_title }}
-        {% if song.is_favourite %}
-            <img src="http://icons.veryicon.com/ico/System/Led/star%201.ico"/>
-        {% endif %}
-        <br>
-    {% endfor %}
+                <div class="thumbnail">
+                    <img src="{{ album.album_logo }}" class="img-responsive" style="padding:10px">
+
+                    <h2 style="margin-left:20px">{{ album.album_title }} <br>
+                        <small> {{ album.artist }}</small>
+                    </h2>
+                    <p class="text-muted small text-right"  style="margin-right:10px">{{ album.genre }}</p>
+                </div> 
+
+            </div>
+
+            <div class="col-md-9" style="height:50px">
+                
+                <div class="row">
+                    <a href="#" class="btn btn-primary" class="responsive" role="button">View All</a> 
+                    <a href="#" class="responsive" style="text-decoration:none; margin-left:15px">Add New Song</a>
+                </div>
+                <div class="row thumbnail" style="margin-top:20px ; padding-left:20px; padding-right:20px">
+                    <h2>Condensed Table</h2>
+                    <table class="table table-condensed"> 
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Audio File</th>
+                                <th>Favorite</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for song in album.song_set.all %}
+                                <tr>
+                                    <td>{{ song.song_title }}</td>
+                                    <td>{{ song.file_type }}</td>
+                                    <td>{% if song.is_favourite %}
+                                            <img src="http://icons.veryicon.com/ico/System/Led/star%201.ico"/>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-sm" role="button">                        
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"/>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 {% endblock %}

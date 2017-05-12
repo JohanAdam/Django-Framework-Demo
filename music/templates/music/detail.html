@@ -23,7 +23,7 @@
                 
                 <div class="row">
                     <a href="#" class="btn btn-primary" class="responsive" role="button">View All</a> 
-                    <a href="#" class="responsive" style="text-decoration:none; margin-left:15px">Add New Song</a>
+                    <a href="{% url 'music:song-add' %}" class="responsive" style="text-decoration:none; margin-left:15px">Add New Song</a>
                 </div>
                 <div class="row thumbnail" style="margin-top:20px ; padding-left:20px; padding-right:20px">
                     <h2>Condensed Table</h2>
@@ -47,9 +47,17 @@
                                         {% endif %}
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-danger btn-sm" role="button">                        
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"/>
-                                        </a>
+                                        <!--<a href="{% url 'music:song-delete' song.id %}" class="btn btn-danger btn-sm" role="button">-->
+                                            <!--<span class="glyphicon glyphicon-trash" aria-hidden="true"/>-->
+                                        <!--</a>-->
+                                        <!-- Delete -->
+                                        <form action="{% url 'music:song-delete' song.id %}" method="post" style="display: inline;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="song_id" value="{{ song.id }}"/>
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
 
